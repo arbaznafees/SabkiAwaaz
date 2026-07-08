@@ -30,9 +30,15 @@ app = FastAPI(
 )
 
 # CORS — allow the Next.js frontend
+# CORS — allow the Next.js frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:3000"],
+    allow_origins=[
+        settings.FRONTEND_URL, 
+        "http://localhost:3000",
+        "http://localhost:5173",          # <-- Added this line
+        "https://sabki-awaaz.vercel.app"  # <-- Added this line
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
