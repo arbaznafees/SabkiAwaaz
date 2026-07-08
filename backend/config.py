@@ -7,8 +7,8 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     GEMINI_API_KEY: str
-    DATABASE_URL: str = "postgresql://neondb_owner:npg_ac9w6SYbrUsJ@ep-autumn-sea-aot9ws8g-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-    FRONTEND_URL: str = "http://localhost:3000"
+    DATABASE_URL: str
+    FRONTEND_URL: str = "https://sabki-awaaz.vercel.app"
     DEFAULT_CONSTITUENCY: str = "New Delhi Central"
 
     class Config:
