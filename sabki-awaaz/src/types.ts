@@ -20,6 +20,17 @@ export interface WardBadgeData {
   submissions: number;
 }
 
+export interface DashboardData {
+  metrics: {
+    total_complaints: number;
+    high_priority_count: number;
+    pending_count: number;
+    resolved_count: number;
+  };
+  top_priorities?: any[];
+  ward_heatmap?: any[];
+}
+
 export interface Theme {
   id: string;
   title: string;

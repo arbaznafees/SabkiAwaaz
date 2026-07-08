@@ -17,6 +17,17 @@ export default defineConfig(() => {
         '/api': {
           target: 'http://localhost:8000',
           changeOrigin: true,
+          configure: (proxy) => {
+            proxy.on('error', (err, _req, res) => {
+              // Silently ignore connection refused errors when backend is offline
+              if ((err as any).code === 'ECONNREFUSED') {
+                if (res && typeof (res as any).writeHead === 'function') {
+                  (res as any).writeHead(503, { 'Content-Type': 'application/json' });
+                  (res as any).end(JSON.stringify({ error: 'Backend offline — running in demo mode', offline: true }));
+                }
+              }
+            });
+          },
         },
       },
     },
